@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        form{
+            text-align: center;
+        }
+        input{
+            font-weight: 700;
+            font-style: oblique;
+            color: rgb(194, 21, 21);
+        }
+        label{
+            font-weight: 700;
+            font-style: oblique;
+        
+        }
+        body{
+            background-image: url("hotelIMAGE.jpg");
+        }
+        h3{
+            font-weight: 700;
+            font-style: oblique;
+        }
+        h1{
+            font-style: oblique;
+            font-weight: 700;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="dove">
+        <form id="main" style="background-color: rgb(195, 240, 15);" >
+            <h1 style="background-color: rgb(244, 233, 30);"> * HOTEL RESTAURANT *</h1>
+            <b><label>Choose Dish ::</label></b>
+            <input type="text" id="username" required style="width: 200px;">
+            <b><label>Choose Price ::</label></b>
+            <input type="text" id="email">
+            <b><label>Select Table =</label required style="width: 200px;">
+               <select id="all">
+               <option id="fist">table1</option>
+               <option id="second">table2</option>
+               <option id="third">table3</option>
+               </select>
+            <input type="submit" id="btn" value="ADDBILL"><br>
+            <h1>Orders</h1>
+            <h3 id="fist1"> Table1 </h3>
+            <h3 id="second2"> Table2 </h3>
+            <h3 id="third3"> Table3 </h3>  
+        </form>
+        <ul id="item"></ul>
+    </div>
+    <script>
+        let form = document.getElementById("main")
+        var input1 = document.getElementById("username")
+        var input2 = document.getElementById("email")
+    
+        form.addEventListener("submit", click)
+        function click(e){
+            e.preventDefault()
+            let obj = {
+                Dishprice : `${input1.value}`,
+                Dishname : `${input2.value}`
+            }
+            console.log(obj)
+            showonScreen(obj)
+            
+        }
+        function showonScreen(obj){
+            var  childlist1 = `<li id ="${obj._id}">
+                 ${obj.Dishprice} ---${obj.Dishname} 
+                 <button onclick = deluser("${obj._id}") style="background-color:DodgerBlue;">Delete</button>
+                 </li>`
+                //  childlist1.appendChild("orange")
+                var drop = document.getElementById("all")
+                var item4 = document.getElementById("fist1")
+                var item5 = document.getElementById("second2")
+                var item6 = document.getElementById("third3")
+                
+                if(drop.value == "table1")
+                {
+                    item4.innerHTML +=  childlist1
+                }
+                else if(drop.value == "table2")
+                {
+                    item5.innerHTML += childlist1
+                }
+                else if(drop.value == "table3")
+                {
+                    item6.innerHTML += childlist1
+                }
+          }
+          function deluser(userId){
+            show1(userId);
+            show2(userId);
+          }
+
+          function show1(userId)
+          {
+            var TABLE1 = document.getElementById("fist1") 
+            var item = document.getElementById(userId) 
+            TABLE1.removeChild(item)   
+          }
+        //   function show2(userId)
+        //   {
+        //     var TABLE2 = document.getElementById("second2") 
+        //     var item2 = document.getElementById(userId) 
+        //     TABLE1.removeChild(item2)
+               
+        //   }
+
+
+    </script>
+   
+</body>
+</html>
